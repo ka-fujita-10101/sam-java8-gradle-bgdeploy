@@ -1,0 +1,15 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto8
+  build:
+    commands:
+      - cd MadWorkshopFunction
+      - ./gradlew test
+      - cd $CODEBUILD_SRC_DIR
+      - sam build
+  post_build:
+    commands:
+      - sam deploy --no-fail-on-empty-changeset

@@ -1,0 +1,5 @@
+version=0.1
+[default.deploy.parameters]
+stack_name = "sam-java8-gradle-bgdeploy"
+s3_bucket = "sam-deploy-mad-ws2-20220217-999364267422"
+capabilities = "CAPABILITY_IAM"
