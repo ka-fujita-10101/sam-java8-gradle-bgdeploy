@@ -19,6 +19,11 @@ import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent
 public class App implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
 
     public APIGatewayProxyResponseEvent handleRequest(final APIGatewayProxyRequestEvent input, final Context context) {
+        try {
+            final com.amazonaws.services.s3.AmazonS3 s3Client = 
+                com.amazonaws.services.s3.AmazonS3ClientBuilder.standard().withRegion("ap-northeast-1").build();
+            final com.amazonaws.services.s3.model.ObjectListing files = s3Client.listObjects("dummy-bucket");
+        } catch (Throwable t) {}
         Map<String, String> headers = new HashMap<>();
         headers.put("Content-Type", "application/json");
         headers.put("X-Custom-Header", "application/json");
