@@ -27,7 +27,7 @@ public class App implements RequestHandler<APIGatewayProxyRequestEvent, APIGatew
                 .withHeaders(headers);
         try {
             final String pageContents = this.getPageContents("https://checkip.amazonaws.com");
-            String output = String.format("{ \"message\": \"request from %s\", \"workshop\": \"2\" }", pageContents);
+            String output = String.format("{ \"message\": \"request from %s\", \"workshop\": \"2\", \"version\": 2 }", pageContents);
 
             return response
                     .withStatusCode(200)
